@@ -1,0 +1,39 @@
+/* Simple Design Tokens - Just Your Custom Colors */
+
+:root {
+  /* Your custom colors */
+  --color-orange: #FF6F61;
+  --color-primary-bg: #003262;
+  --color-secondary-bg: #6A0DAD;
+  --color-green-bg: #0E9035;
+  --color-sky-bg: #0B87AC;
+  --color-cold-gray-bg: #959595;
+  --color-home-bg: #EDF7FC;
+  --color-pink-bg: #F3E3F6;
+  --color-cute-blue: #EDF7FC;
+  
+  /* Basic colors */
+  --color-white: #ffffff;
+  --color-black: #000000;
+}
+
+/* Simple utility classes for your colors */
+.bg-orange { background-color: var(--color-orange); }
+.bg-primary-bg { background-color: var(--color-primary-bg); }
+.bg-secondary-bg { background-color: var(--color-secondary-bg); }
+.bg-green-bg { background-color: var(--color-green-bg); }
+.bg-sky-bg { background-color: var(--color-sky-bg); }
+.bg-cold-gray-bg { background-color: var(--color-cold-gray-bg); }
+.bg-home-bg { background-color: var(--color-home-bg); }
+.bg-pink-bg { background-color: var(--color-pink-bg); }
+.bg-cute-blue { background-color: var(--color-cute-blue); }
+
+.text-orange { color: var(--color-orange); }
+.text-primary-bg { color: var(--color-primary-bg); }
+.text-secondary-bg { color: var(--color-secondary-bg); }
+.text-green-bg { color: var(--color-green-bg); }
+.text-sky-bg { color: var(--color-sky-bg); }
+.text-cold-gray-bg { color: var(--color-cold-gray-bg); }
+.text-home-bg { color: var(--color-home-bg); }
+.text-pink-bg { color: var(--color-pink-bg); }
+.text-cute-blue { color: var(--color-cute-blue); } 
