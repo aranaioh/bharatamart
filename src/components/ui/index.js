@@ -30,6 +30,9 @@ export {
 } from "./select"
 export { Checkbox } from "./checkbox"
 export { Switch } from "./switch"
+export { Slider } from "./slider"
+export { RadioGroup, RadioGroupItem } from "./radio-group"
+export { FilterAccordion, FilterAccordionItem, FilterAccordionTrigger, FilterAccordionContent } from "./filter-accordion"
 export { Textarea } from "./textarea"
 export { Alert, AlertTitle, AlertDescription } from "./alert"
 export {

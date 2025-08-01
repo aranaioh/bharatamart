@@ -8,7 +8,7 @@ const FooterMenu = () => {
 
     return (
         <>
-            <div className="w-full flex justify-between shadow-inner px-4 py-3 bg-white">
+            <div className="w-full flex z-[99999] justify-between shadow-inner px-4 py-3 bg-greeen-600">
                 <a href="/compare" className="cursor-pointer  bg-white flex flex-col justify-center items-center" title="Compare"><IoIosGitCompare className="text-2xl " /> <span className="text-xs sm:text-sm font-semibold">Compare</span></a>
                 <a href="/wishlist" className="cursor-pointer  bg-white flex flex-col justify-center items-center" title="Wishlist"><IoMdHeartEmpty className="text-2xl" />  <span className="text-xs sm:text-sm font-semibold">Wishlist</span></a>
                 <div onClick={() => setCartDrawerOpen(true)} className="cursor-pointer  bg-white flex flex-col justify-center items-center" title="Cart"><IoIosCart className="text-2xl" />  <span className="text-xs sm:text-sm font-semibold">Cart</span> </div>

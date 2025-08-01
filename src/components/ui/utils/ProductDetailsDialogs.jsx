@@ -40,9 +40,10 @@ const ProductDetailDialogs = ({ open, setIsDialogOpen }) => {
 
     return (
         <Dialog open={open} onOpenChange={setIsDialogOpen}>
-            <DialogContent className="max-w-4xl w-full p-0 md:py-5 md:pl-5 flex gap-10 bg-white flex-col md:flex-row">
+            <DialogContent className="max-w-4xl w-full p-0 md:py-5 md:pl-5 md:flex md:gap-10 bg-white !max-sm:flex-col">
+
                 {/* Left: Product Image/Swiper */}
-                <div className="md:w-5/12 w-full mb-6 relative group overflow-hidden flex justify-center items-end p-3 md:p-0">
+                <div className="md:w-5/12 w-full md:mb-6 relative group overflow-hidden flex justify-center items-end p-3 md:p-0">
                     <Swiper
                         modules={[Navigation]}
                         className="w-full "
@@ -85,8 +86,9 @@ const ProductDetailDialogs = ({ open, setIsDialogOpen }) => {
                         </div>
                     </div>
                 </div>
-                {/* Right: Product Details (fully scrollable) */}
-                <div className="md:w-7/12 mb-5 mt-9 w-full flex flex-col overflow-y-auto custom-scroll" style={{ maxHeight: "70vh" }}>
+
+                {/* Right: Product Details */}
+                <div className="md:w-7/12 mb-5 md:mt-9 w-full max-sm:px-5 flex flex-col overflow-y-auto custom-scroll" style={{ maxHeight: "70vh" }}>
                     <h2 className="text-xl md:text-2xl font-semibold mb-2 leading-tight">{product?.title || 'Product Title'}</h2>
                     <div className="flex items-center gap-3 mb-2">
                         <span className="line-through text-gray-400 text-base md:text-lg">₹{product.oldPrice?.toLocaleString()}</span>
@@ -132,6 +134,7 @@ const ProductDetailDialogs = ({ open, setIsDialogOpen }) => {
                         }
                     `}</style>
                 </div>
+
             </DialogContent>
         </Dialog>
     );
