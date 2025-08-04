@@ -1,6 +1,6 @@
 import { Star as LucideStar } from "lucide-react";
 
-export default function Star({ value }) {
+export default function Star({ value = 0 }) {
     const stars = [];
     for (let i = 1; i <= 5; i++) {
         const diff = value - (i - 1);
