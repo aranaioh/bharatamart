@@ -5,6 +5,17 @@
 import { useState } from "react";
 import { RiMenuFill } from "react-icons/ri";
 import { BiUser } from "react-icons/bi";
+
+import {
+    DropdownMenu,
+    DropdownMenuTrigger,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuSeparator,
+} from "../ui/dropdown";
+import { RiExportFill } from "react-icons/ri";
+import { FaLocationDot } from "react-icons/fa6";
+import { RiLogoutBoxRFill } from "react-icons/ri";
 import { RxCross1 } from "react-icons/rx";
 import { Sheet, SheetContent, SheetClose } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
@@ -21,6 +32,9 @@ import { fashionCategories, electronicsCategories, homeDecorCategories, televisi
 export default function TopNavbar1024() {
     const [isOpen, setIsOpen] = useState(false);
     const [activeTab, setActiveTab] = useState("menu");
+    const [accountDropdownOpen, setAccountDropdownOpen] = useState(false);
+
+    console.log("TopNavbar1024 rendered", accountDropdownOpen);
 
     return (
         <div className="w-full h-20 flex justify-between px-4 items-center">
@@ -29,7 +43,73 @@ export default function TopNavbar1024() {
                 className="font-semibold text-3xl cursor-pointer"
             />
             <img src="/Bharatmart_logo_200.png" alt="logo" className="w-16 h-16" />
-            <BiUser className="text-3xl" />
+
+            <DropdownMenu open={accountDropdownOpen} onOpenChange={(open) => setAccountDropdownOpen(open)}>
+                <DropdownMenuTrigger asChild>
+                    <button
+                        className="flex items-center justify-center w-10 h-10 rounded-full border-2 border-primary-bg bg-white focus:outline-none"
+                        onClick={() => setAccountDropdownOpen(!accountDropdownOpen)}
+                    >
+                        <BiUser className="text-3xl text-primary-bg" />
+                    </button>
+                </DropdownMenuTrigger>
+
+                {accountDropdownOpen && (
+                    <DropdownMenuContent align="end" className="w-56">
+                        <DropdownMenuItem asChild>
+                            <a
+                                href="/myaccount/profile"
+                                className="flex items-center gap-2 py-2 px-3"
+                                onClick={() => setAccountDropdownOpen(false)}
+                            >
+                                <BiUser className="text-xl text-primary-bg" />
+                                My Profile
+                            </a>
+                        </DropdownMenuItem>
+                        <DropdownMenuItem asChild>
+                            <a
+                                href="/wishlist"
+                                className="flex items-center gap-2 py-2 px-3"
+                                onClick={() => setAccountDropdownOpen(false)}
+                            >
+                                <IoMdHeartEmpty className="text-xl text-primary-bg" />
+                                Wishlist
+                            </a>
+                        </DropdownMenuItem>
+                        <DropdownMenuItem asChild>
+                            <a
+                                href="/myaccount/orders"
+                                className="flex items-center gap-2 py-2 px-3"
+                                onClick={() => setAccountDropdownOpen(false)}
+                            >
+                                <RiExportFill className="text-xl text-primary-bg" />
+                                Orders
+                            </a>
+                        </DropdownMenuItem>
+                        <DropdownMenuItem asChild>
+                            <a
+                                href="/myaccount/addressess"
+                                className="flex items-center gap-2 py-2 px-3"
+                                onClick={() => setAccountDropdownOpen(false)}
+                            >
+                                <FaLocationDot className="text-xl text-primary-bg" />
+                                Addressess
+                            </a>
+                        </DropdownMenuItem>
+                        <DropdownMenuSeparator />
+                        <DropdownMenuItem asChild>
+                            <button
+                                className="flex items-center gap-2 py-2 px-3 w-full text-left"
+                                onClick={() => setAccountDropdownOpen(false)}
+                            >
+                                <RiLogoutBoxRFill className="text-xl text-primary-bg" />
+                                Logout
+                            </button>
+                        </DropdownMenuItem>
+                    </DropdownMenuContent>
+                )}
+
+            </DropdownMenu>
 
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
                 <SheetContent side="left" className="w-[300px] p-0">

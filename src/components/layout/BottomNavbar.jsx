@@ -8,6 +8,40 @@ import { BiUser } from 'react-icons/bi';
 import Searchbar from "./Searchbar";
 import { fashionCategories, electronicsCategories, homeDecorCategories, televisionsCategories } from "@/constants/categories";
 import CartDrawer from "../ui/utils/CartDrawer";
+import { RiExportFill } from "react-icons/ri";
+import { FaLocationDot } from "react-icons/fa6";
+import { RiLogoutBoxRFill } from "react-icons/ri";
+
+const accountMenuItems = [
+  {
+    url: "/myaccount",
+    icon: <BiUser className="text-xl text-primary-bg" />,
+    label: "My Profile",
+  },
+  {
+    url: "/wishlist",
+    icon: <IoMdHeartEmpty className="text-xl text-primary-bg" />,
+    label: "Wishlist",
+  },
+  {
+    url: "/myaccount/orders",
+    icon: <RiExportFill className="text-xl text-primary-bg" />,
+    label: "Orders",
+  },
+  {
+    url: "/myaccount/addressess",
+    icon: <FaLocationDot className="text-xl text-primary-bg" />,
+    label: "Addressess",
+  },
+];
+
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+} from "../ui/dropdown";
 
 export default function BottomNavbar() {
   const location = useLocation();
@@ -15,6 +49,7 @@ export default function BottomNavbar() {
   const [activeFashionCategory, setActiveFashionCategory] = useState(null);
   const [activeFashionSubcategory, setActiveFashionSubcategory] = useState(null);
   const [cartdrawerOpen, setCartDrawerOpen] = useState(false);
+  const [accountDropdownOpen, setAccountDropdownOpen] = useState(false);
 
   const handleMouseEnter = (menu) => {
     setActiveMenu(menu);
@@ -210,13 +245,50 @@ export default function BottomNavbar() {
 
         {/* User/account/cart icons */}
         <div className="flex items-center gap-2 justify-end">
-          <a href="/account" className="cursor-pointer  bg-white p-2 rounded-full" title="Account"><BiUser className="text-3xl" /></a>
-          <a href="/compare" className="cursor-pointer  bg-white p-2 rounded-full" title="Compare"><IoIosGitCompare className="text-3xl " /></a>
-          <a href="/wishlist" className="cursor-pointer  bg-white p-2 rounded-full" title="Wishlist"><IoMdHeartEmpty className="text-3xl" /></a>
-          <div onClick={() => setCartDrawerOpen(true)} className="cursor-pointer  bg-primary-bg text-white p-2 rounded-full" title="Cart"><IoIosCart className="text-3xl" /> </div>
+          <a href="/compare" className="cursor-pointer bg-white p-2 rounded-full" title="Compare"><IoIosGitCompare className="text-3xl " /></a>
+          {/* User Dropdown using shadcn UI */}
+          <div
+            className="relative"
+            onMouseEnter={() => setAccountDropdownOpen(true)}
+          >
+            <DropdownMenu open={accountDropdownOpen}
+              onMouseEnter={() => setAccountDropdownOpen(true)}
+              onMouseLeave={() => setAccountDropdownOpen(false)}
+            >
+              <DropdownMenuTrigger asChild>
+                <button className="cursor-pointer bg-white p-2 rounded-full flex items-center">
+                  <BiUser className="text-3xl" />
+                </button>
+              </DropdownMenuTrigger>
+              {accountDropdownOpen && (
+                <DropdownMenuContent
+                  align="end" className="w-56 p-2 space-y-1"
+                  onMouseEnter={() => setAccountDropdownOpen(true)}
+                  onMouseLeave={() => setAccountDropdownOpen(false)}
+                >
+                  {accountMenuItems.map((item) => (
+                    <DropdownMenuItem asChild key={item.label}>
+                      <a href={item.url} className="flex items-center gap-2 py-2 hover:bg-[#eee] px-3 rounded-md">
+                        {item.icon}
+                        {item.label}
+                      </a>
+                    </DropdownMenuItem>
+                  ))}
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem asChild>
+                    <button className="flex items-center gap-2 py-2 px-3 w-full text-left rounded-md" onClick={() => {/* handle logout here */ }}>
+                      <RiLogoutBoxRFill className="text-2xl text-primary-bg" />
+                      Logout
+                    </button>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              )}
+            </DropdownMenu>
+          </div>
+          <a href="/wishlist" className="cursor-pointer bg-white p-2 rounded-full " title="Wishlist"><IoMdHeartEmpty className="text-3xl" /></a>
+          <div onClick={() => setCartDrawerOpen(true)} className="cursor-pointer bg-primary-bg text-white p-2 rounded-full" title="Cart"><IoIosCart className="text-3xl" /> </div>
           <h4 className="font-semibold text-lg">₹ {220}</h4>
         </div>
-
       </div>
 
       {cartdrawerOpen && (

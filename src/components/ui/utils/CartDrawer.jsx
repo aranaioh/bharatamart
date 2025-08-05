@@ -1,6 +1,7 @@
 import React from "react";
 import { Sheet, SheetContent, SheetClose, SheetHeader } from "../index";
 import CartProductCard from "./CartProductCard";
+import { useNavigate } from "react-router-dom";
 
 const mockProducts = [
         {
@@ -41,6 +42,7 @@ const mockProducts = [
 ];
 
 const CartDrawer = ({ isOpen, onClose, products = mockProducts }) => {
+    const navigate = useNavigate();
     const handleRemove = (product) => {};
     const handleQuantityChange = (product, qty) => {};
     const subtotal = products.reduce((sum, p) => sum + p.price * p.quantity, 0);
@@ -90,7 +92,7 @@ const CartDrawer = ({ isOpen, onClose, products = mockProducts }) => {
                             <span className="text-lg font-medium">Subtotal:</span>
                             <span className="text-2xl font-bold text-blue-900">₹{subtotal.toLocaleString()}</span>
                         </div>
-                        <button className="w-full py-3 bg-blue-900 text-white rounded text-lg font-semibold mb-2">View Cart</button>
+                        <button onClick={() => navigate("/mycart")} className="w-full py-3 bg-blue-900 text-white rounded text-lg font-semibold mb-2">View Cart</button>
                         <button className="w-full py-3 bg-blue-900 text-white rounded text-lg font-semibold">Checkout</button>
                     </div>
                 )}

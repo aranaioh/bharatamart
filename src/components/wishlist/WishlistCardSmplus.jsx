@@ -1,6 +1,5 @@
 import { FaArrowDown } from "react-icons/fa6";
 import Star from "../ui/star";
-import { DeleteIcon } from "lucide-react";
 import { RiDeleteBin6Fill } from "react-icons/ri";
 import AddToCartButton from "../ui/addtocartButton";
 
