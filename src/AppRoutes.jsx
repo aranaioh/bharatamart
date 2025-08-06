@@ -10,6 +10,8 @@ import Order from './components/accounts/Order'
 import Profile from './components/accounts/Profile'
 import Register from './pages/Register'
 import Login from './pages/Login'
+import Checkout from './pages/Checkout'
+import ProductDetails from './pages/ProductDetails'
 
 function AppRoutes() {
   return (
@@ -17,9 +19,11 @@ function AppRoutes() {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/checkout" element={<Checkout />} />
         <Route element={<LayoutProvider />}>
           <Route path="/" element={<Home />} />
           <Route path="/shop" element={<Shop />} />
+          <Route path="/details" element={<ProductDetails />} />
           <Route path="/wishlist" element={<Wishlist />} />
           <Route path="/mycart" element={<Cart />} />
           <Route path="/myaccount" element={<Account />}>
