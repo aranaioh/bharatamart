@@ -3,6 +3,8 @@
 "use client"
 
 import { useState } from "react";
+import { useAuth } from "../../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 import { RiMenuFill } from "react-icons/ri";
 import { BiUser } from "react-icons/bi";
 
@@ -33,6 +35,14 @@ export default function TopNavbar1024() {
     const [isOpen, setIsOpen] = useState(false);
     const [activeTab, setActiveTab] = useState("menu");
     const [accountDropdownOpen, setAccountDropdownOpen] = useState(false);
+    const { logout } = useAuth();
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        logout();
+        setAccountDropdownOpen(false);
+        navigate("/login");
+    };
 
     console.log("TopNavbar1024 rendered", accountDropdownOpen);
 
@@ -100,7 +110,7 @@ export default function TopNavbar1024() {
                         <DropdownMenuItem asChild>
                             <button
                                 className="flex items-center gap-2 py-2 px-3 w-full text-left"
-                                onClick={() => setAccountDropdownOpen(false)}
+                                onClick={handleLogout}
                             >
                                 <RiLogoutBoxRFill className="text-xl text-primary-bg" />
                                 Logout
@@ -251,4 +261,5 @@ export default function TopNavbar1024() {
 
         </div>
     );
+
 }

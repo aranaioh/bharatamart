@@ -1,3 +1,4 @@
+import { Outlet } from 'react-router-dom';
 import FooterMenu from './FooterMenu';
 import { LeftMenu, TopNavbar, BottomNavbar, Footer } from './index';
 import TopNavbar1024 from './Navbar1024';
@@ -19,7 +20,7 @@ const LayoutProvider = ({ children }) => {
         <BottomNavbar />
         <div>
           <div>
-            {children}
+            <Outlet />
           </div>
           <Footer />
         </div>
